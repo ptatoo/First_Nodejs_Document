@@ -1,7 +1,6 @@
 import SearchPanel from "./components/SearchPanel";
 import Classes from "./components/Classes";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [input, setInput] = useState("");
@@ -49,12 +48,12 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <div>
         <SearchPanel onGoSearch={retrieveGoSearch} />
       </div>
       <Classes data={sectionData} sectionPara={sectionPara} />
-    </BrowserRouter>
+    </>
   );
 }
 

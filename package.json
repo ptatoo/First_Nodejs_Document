@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ptatoo.github.io/First_Nodejs_Document/",
+  "homepage": "https://ptatoo.github.io/First_Nodejs_Document",
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build",
   "scripts": {
