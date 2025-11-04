@@ -31,7 +31,9 @@ function App() {
     console.log(input, type);
     //fetch data from server
     try {
-      const response = await fetch("http://localhost:3000/");
+      const response = await fetch(
+        "https://ucla-schedule-scraper.onrender.com/"
+      );
       if (!response.ok) {
         throw new Error("HTTP error: ${response.status}");
       }
