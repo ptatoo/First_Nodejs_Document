@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 interface Props {
-  onSelectItem: (item1: string, item2: string) => void;
+  updateSearchType: (type: string) => void;
 }
 
-const SearchType = ({ onSelectItem: onGoSearch }: Props) => {
+const SearchType = ({ updateSearchType }: Props) => {
   const search_type = [
     "Subject Area",
     "Class Units",
@@ -22,42 +22,32 @@ const SearchType = ({ onSelectItem: onGoSearch }: Props) => {
     "Online - Classes Recorded",
     "Online - Asynchronous",
   ];
-  const [selectedType, setSelectedIndex] = useState(search_type[0]);
-  const [searchTerm, setSearchTerm] = useState("");
 
-  function goSearch() {
-    onGoSearch(searchTerm, selectedType);
-  }
+  const updateSearch = (type: string) => {
+    updateSearchType(type);
+  };
 
   return (
     <>
-      <label>
-        Search By:
-        <select
-          name="selectedSearch"
-          onChange={(event) => {
-            setSelectedIndex(event.target.value);
-          }}
-        >
-          {search_type.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <br></br>
-      <label>
-        Text input:{" "}
-        <input
-          type="text"
-          placeholder={selectedType}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </label>
-      <button onClick={goSearch}>Go</button>
+      <div className="pl-3">
+        <label className=" w-32">
+          Search By:
+          <select
+            name="selectedSearch"
+            onChange={(event) => {
+              const newValue = event.target.value;
+              updateSearch(newValue);
+            }}
+            className="bg-white text-center w-full p-1"
+          >
+            {search_type.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
     </>
   );
 };

@@ -3,8 +3,6 @@ import Classes from "./components/Classes";
 import { useState } from "react";
 
 function App() {
-  const [input, setInput] = useState("");
-  const [type, setType] = useState("");
   const [sectionData, setSectionData] = useState([]);
   const sectionPara = [
     "classId",
@@ -21,14 +19,12 @@ function App() {
   ];
 
   const retrieveGoSearch = (input: string, type: string) => {
-    setInput(input);
-    setType(type);
-    retrieveClassData();
+    retrieveClassData(input, type);
   };
 
   //fetches data and stores it as 2D array
-  async function retrieveClassData() {
-    console.log(input, type);
+  async function retrieveClassData(input: string, type: string) {
+    console.log("input: ", input, "\ntype: ", type);
     //fetch data from server
     try {
       const response = await fetch(
@@ -51,7 +47,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="font-serif">
         <SearchPanel onGoSearch={retrieveGoSearch} />
       </div>
       <Classes data={sectionData} sectionPara={sectionPara} />
