@@ -438,11 +438,20 @@ const TextInput = ({ goSearch }: Props) => {
 
   return (
     <>
-      <div>Text input:</div>
-      <Select options={subjectOptions} onChange={handleChange} />
-      <button className="bg-white p-1.5" onClick={goButtonClicked}>
-        Go
-      </button>
+      <div className="flex">
+        <div className="w-15 text-right mt-2 mr-2">Search:</div>
+        <Select
+          options={subjectOptions}
+          onChange={handleChange}
+          className="w-113"
+        />
+        <button
+          className="bg-white p-1.5 ml-3 rounded border-gray-300 border w-10 hover:bg-gray-200 active:bg-gray-400"
+          onClick={goButtonClicked}
+        >
+          Go
+        </button>
+      </div>
     </>
   );
 };

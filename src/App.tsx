@@ -9,12 +9,27 @@ function App() {
   const sectionPara = [
     "classId",
     "lec_dis",
+    "status",
     "total_spots",
-    "enrollled_spots",
+    "enrolled_spots",
     "waitlist_status",
     "days",
     "start_time",
     "end_time",
+    "location",
+    "units",
+    "instructors",
+  ];
+
+  const displayPara = [
+    "section",
+    "status",
+    "total spots",
+    "enrolled spots",
+    "waitlist",
+    "days",
+    "start time",
+    "end time",
     "location",
     "units",
     "instructors",
@@ -31,18 +46,19 @@ function App() {
     //fetch data from server
     try {
       const response = await fetch(
-        "https://ucla-schedule-scraper.onrender.com/" + classId
+        "https://ucla-schedule-scraper.onrender.com/"
       );
       if (!response.ok) {
         throw new Error("HTTP error: ${response.status}");
       }
       const jsonData = await response.json();
-
+      console.log(jsonData[0]);
       //convert data from object to 2D array
       const allSections = jsonData.map((item: any) => {
         return sectionPara.map((key) => item[key]);
       });
       setSectionData(allSections);
+      console.log(sectionData[0]);
     } catch (error) {
       console.error("Error message: ", error);
     }
@@ -53,7 +69,9 @@ function App() {
       <div className="font-serif">
         <SearchPanel onGoSearch={retrieveGoSearch} />
       </div>
-      <Classes data={sectionData} sectionPara={sectionPara} />
+      <div className="font-serif">
+        <Classes data={sectionData} sectionPara={displayPara} />
+      </div>
     </>
   );
 }

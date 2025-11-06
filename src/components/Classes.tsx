@@ -28,7 +28,11 @@ function Classes({ data, sectionPara }: Props) {
     <>
       <div className="class list">
         {listofClasses.map((item) => (
-          <SingleClass singleClassData={[item]} key={item[0]}></SingleClass>
+          <SingleClass
+            sectionPara={sectionPara}
+            singleClassData={item}
+            key={item[0]}
+          ></SingleClass>
         ))}
       </div>
     </>
