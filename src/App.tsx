@@ -48,13 +48,13 @@ function App() {
     //fetch data from server
     try {
       const response = await fetch(
-        "https://ucla-schedule-scraper.onrender.com/"
+        "https://ucla-schedule-scraper-backend.onrender.com/get?filePath=MATH.csv"
       );
       if (!response.ok) {
         throw new Error("HTTP error: ${response.status}");
       }
       const jsonData = await response.json();
-      console.log(jsonData[0]);
+      console.log(JSON.stringify(jsonData));
       //convert data from object to 2D array
       const allSections = jsonData.map((item: any) => {
         return sectionPara.map((key) => item[key]);
