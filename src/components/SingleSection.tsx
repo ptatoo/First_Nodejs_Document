@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface Props {
   data: string[];
   sectionPara: string[];

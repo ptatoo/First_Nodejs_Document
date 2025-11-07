@@ -43,6 +43,8 @@ function App() {
 
   //fetches data and stores it as 2D array
   async function retrieveClassData(classId: string) {
+    let temp = classId;
+    classId = temp;
     //fetch data from server
     try {
       const response = await fetch(

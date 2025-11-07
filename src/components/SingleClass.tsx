@@ -4,7 +4,6 @@ import SingleLec from "./SingleLec";
 interface Props {
   singleClassData: string[][];
   sectionPara: string[];
-  key: string;
 }
 
 function SingleClass({ singleClassData, sectionPara }: Props) {
